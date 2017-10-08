@@ -29,7 +29,7 @@ public class WashDaoImpl implements IWash {
 			em.close();
 			return object;
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			return null;
 		}
 		

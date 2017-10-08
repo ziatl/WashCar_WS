@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class User implements Serializable {
 	private int id;
 	private String nom;
 	private String prenom;
+	@Column(unique=true)
 	private String email;
 	private String telephone;
 	private String adresse;

@@ -8,4 +8,6 @@ public interface IWash {
 	public Object findById(Object object,int id);
 	public Object updateObject(Object object);
 	public List<Object> getAllObject(String object);
+	
+	
 }

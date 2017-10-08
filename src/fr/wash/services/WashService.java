@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import fr.wash.dao.WashDaoImpl;
 import fr.wash.entities.User;
@@ -30,9 +31,9 @@ public class WashService {
 	
 	@GET
 	@Path("/user")
-	public List<Object> getUsers(){
+	public Response getUsers(){
 		
-		return dao.getAllObject("User");
+		return Response.ok().entity(dao.getAllObject("User")).build();
 	}
 	
 	@GET
@@ -44,10 +45,11 @@ public class WashService {
 	
 	@POST
 	@Path("/user")
-	public User addUser(User user){
+	public Response addUser(User user){
 		dao = new WashDaoImpl();
 		dao.addObject(user);
-		return user;
+		
+		return Response.ok().entity(user).build();
 	}
 	
 	@PUT

@@ -12,8 +12,6 @@ public class RequestFilter implements ContainerRequestFilter {
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
 		// TODO Auto-generated method stub
-		System.out.println(requestContext.getMethod());
-		System.out.println("Aziiz");
 	}
 
 }
