@@ -59,6 +59,12 @@ public class WashService {
 		return (User) dao.updateObject(user);
 	}
 	
+	@POST
+	@Path("/login")
+	public Response login(User user){
+		return Response.ok().entity(dao.login(user)).build();
+	}
+	
 	
 	
 

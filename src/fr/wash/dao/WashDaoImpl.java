@@ -7,6 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import fr.wash.database.PersistenceManager;
+import fr.wash.entities.User;
 import fr.wash.interfaces.IWash;
 
 public class WashDaoImpl implements IWash {
@@ -84,6 +85,23 @@ public class WashDaoImpl implements IWash {
 		em = PersistenceManager.getEntityManager();
 		Query q = em.createQuery("select o from "+object+" o");
 		return q.getResultList();
+	}
+	
+	@Override
+	public User login(User user) {
+		em = PersistenceManager.getEntityManager();
+		Query q = em.createQuery("select u from User u where u.email like :X and u.mdp like :Y");
+		q.setParameter("X", user.getEmail());
+		q.setParameter("Y", user.getMdp());
+		try {
+			return (User) q.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception		
+			user = new User();
+			user.setId(0);
+			return user;
+		}
+		
 	}
 
 }
