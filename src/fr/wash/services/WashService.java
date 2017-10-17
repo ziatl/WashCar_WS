@@ -1,5 +1,6 @@
 package fr.wash.services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -12,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import fr.wash.dao.WashDaoImpl;
+import fr.wash.entities.Contact;
 import fr.wash.entities.User;
 
 @Path("/rest")
@@ -47,14 +49,16 @@ public class WashService {
 	@Path("/user")
 	public Response addUser(User user){
 		dao = new WashDaoImpl();
+		user.setDateCreate(new Date());
 		dao.addObject(user);
-		
 		return Response.ok().entity(user).build();
 	}
 	
 	@PUT
 	@Path("/user")
-	public User updateUser(User user){		
+	public User updateUser(User user){
+		System.err.println("update");
+		user.setDateUpdate(new Date());
 		dao = new WashDaoImpl();
 		return (User) dao.updateObject(user);
 	}
@@ -63,6 +67,18 @@ public class WashService {
 	@Path("/login")
 	public Response login(User user){
 		return Response.ok().entity(dao.login(user)).build();
+	}
+	
+	//Contact
+	@POST
+	@Path("/contact")
+	public Response addContact(Contact contact){
+		System.out.println(contact.toString());
+		contact.setDateCreate(new Date());
+		contact.setStatus(0);
+		dao = new WashDaoImpl();
+		dao.addObject(contact);
+		return Response.ok().entity(contact).build();
 	}
 	
 	

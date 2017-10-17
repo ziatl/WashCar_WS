@@ -15,8 +15,9 @@ public class Contact implements Serializable {
 	private int id;
 	private String nom;
 	private String email;
-	private String telephone;
+	private String sujet;
 	private String message;
+	private int status;
 	private Date dateCreate;
 	public int getId() {
 		return id;
@@ -36,17 +37,23 @@ public class Contact implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getTelephone() {
-		return telephone;
+	public String getSujet() {
+		return sujet;
 	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setSujet(String sujet) {
+		this.sujet = sujet;
 	}
 	public String getMessage() {
 		return message;
 	}
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	public Date getDateCreate() {
 		return dateCreate;
@@ -58,7 +65,7 @@ public class Contact implements Serializable {
 		super();
 		this.nom = nom;
 		this.email = email;
-		this.telephone = telephone;
+		this.sujet = telephone;
 		this.message = message;
 		this.dateCreate = dateCreate;
 	}
